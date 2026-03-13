@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jogo da Memória dos Santos</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <header>
+            <br>
+            <h1>Jogo da Memória dos</h1> 
+            <h1 style="color: #bc6828bc; text-align: center; font-size: 80px;">Santos</h1>
+            <br>
+        </header>
+        
+        <div class="container-principal" style="background-color:antiquewhite;">
+        <div class="grade-imagens">
+        <table>
+        <script>
+            const santos = [
+                "SaoFilipeNeri",
+                "SaoJose",
+                "SaoJoaoPauloII",
+                "SantaCecilia",
+                "NossaSenhoraDoCarmo",
+                "SantaTeresinha",
+                "SantaLuzia",
+                "SantoAgostinho"
+            ]
+            const cartas = [...santos, ...santos];
+            cartas.sort(() => Math.random() -0.5);
+            let primeiraCarta = null;
+            let segundaCarta = null;
+            let bloqueado = false;
+
+            
+        
+            function VirarCarta(posicao) {
+            
+                if(bloqueado) return
+                let carta = document.getElementById(posicao);
+                let santo = cartas[posicao-1]
+                carta.src = "img/" + santo + ".jpg"
+                if(primeiraCarta == null) {
+                    primeiraCarta = posicao
+                }else if(segundaCarta == null){
+                    segundaCarta = posicao
+                    bloqueado = true
+                    setTimeout(verificarPar, 800)
+                }
+                }
+
+            function verificarPar(){
+                let santo1 = cartas[primeiraCarta-1];
+                let santo2 = cartas[segundaCarta-1];
+                if(santo1 == santo2){
+                    //acertou
+                    primeiraCarta = null;
+                    segundaCarta = null;
+                    bloqueado = false;
+                }else{
+                    //errou
+                    document.getElementById(primeiraCarta).src = "img/VersoDaCarta3.jpg";
+                    document.getElementById(segundaCarta).src = "img/VersoDaCarta3.jpg";
+                    primeiraCarta = null;
+                    segundaCarta = null;
+                    bloqueado = false;
+                }
+            }
+        </script>
+            <tr>
+                <td> <img id="1" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(1)"> </td>
+                <td> <img id="2" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(2)"> </td>
+                <td> <img id="3" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(3)"> </td>
+                <td> <img id="4" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(4)">  </td>
+            </tr>
+            <tr>
+                <td> <img id="5" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(5)"> </td>
+                <td> <img id="6" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(6)"> </td>
+                <td> <img id="7" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(7)"> </td>
+                <td> <img id="8" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(8)"> </td>
+            </tr>
+            <tr>
+                <td> <img id="9" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(9)"> </td>
+                <td> <img id="10" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(10)"> </td>
+                <td> <img id="11" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(11)"> </td>
+                <td> <img id="12" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(12)"> </td>
+                <tr>
+                <td> <img id="13" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(13)"> </td>
+                <td> <img id="14" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(14)"> </td>
+                <td> <img id="15" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(15)"> </td>
+                <td> <img id="16" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(16)"> </td>
+            </tr>
+            </tr>
+        </table>
+        </div>
+
+            <aside class="barra-lateral">
+                <h1 style="letter-spacing: 5px; -webkit-text-stroke: 2px #bc6828bc; ">Jogo da memória dos Santos</h1>
+            </aside>
+        </div>
+    </body>
+    <footer>
+        <p>© 2026 - Hevelin Duarte</p>
+        <p>Contato: <a href="hevelinduarte002@gmail.com">hevelinduarte002@gmail.com</a></p>
+        <p>LinkedIn: <a href="www.linkedin.com/in/hevelin-duarte-guerra-084bbb2a9">www.linkedin.com/in/hevelin-duarte-guerra-084bbb2a9</a></p>
+    </footer>
+</html>

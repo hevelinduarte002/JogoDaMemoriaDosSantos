@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100%;
+    background-color: burlywood;
+}
+h1{
+    
+    text-align: center;
+    color:navajowhite;
+    font-size: 80px; 
+    letter-spacing: -5px; 
+    margin: 0;           /* Remove o espaço externo entre as linhas */
+    line-height: 0.8;    /* "Aperta" o espaço vertical entre as palavras */
+    padding: 5px 0;      /* Ajuste fino se precisar de um respiro mínimo */
+    -webkit-text-stroke: 2px rgb(255, 255, 255);
+    font-family:serif;
+}
+p {
+    text-align: center;
+    color: rgb(255, 250, 250);
+
+}
+
+header{
+    background-color: burlywood;
+    margin: 0; /* Garante que não haja espaço fora */
+    padding: 20px 0;
+    width: 100%;
+}
+.grade-imagens {
+    flex: 1; 
+    padding: 20px;
+    
+}
+
+.container-principal {
+    display: flex;          /* Coloca a tabela e a barra lado a lado */
+    align-items: stretch;   /* Faz a barra lateral esticar até o final */
+    display: flex;
+    flex: 1; /* Faz o container ocupar todo o resto da altura */
+    
+}
+.barra-lateral {
+    background-color: rgb(255, 255, 255); /* Azul escuro */
+    color: white;
+    padding: 20px;
+    writing-mode: vertical-rl; /* 90deg, 180deg, 270deg */
+    transform-origin: left top; /* Ajusta o ponto de rotação */
+    width: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0; /* Colado no header */
+}
+.barra-lateral h1 {
+    writing-mode: vertical-rl; /* Gira o texto nativamente */
+    transform: rotate(180deg); /* Inverte para ler de baixo para cima, se preferir */
+    white-space: nowrap;
+    font-size: 50px;
+    color: burlywood;
+}
+
+footer{
+    background-color:burlywood;
+    margin: 0; /* Garante que não haja espaço fora */
+    padding: 20px 0;
+    width: 100%;
+    text-align: center;
+}
+a {
+    color: white;
+}
+td {
+    padding: 5px;
+}
