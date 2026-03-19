@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jogo da Memória dos Santos</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <nav class="navbar"> 
+            <div class="nav-container"> 
+                <a href="https://jogos-da-memoria-animes-3wt7.vercel.app/" class="logo">Jogos da memória</a>
+               
+                    <li><a href="https://jogos-da-memoria-animes-3wt7.vercel.app/">Início</a></li>
+                    <li><a href="https://jogos-da-memoria-animes-p3ok.vercel.app/">Toilet Bound Hanako-kun</a></li>
+                    <li><a href="https://jogos-da-memoria-animes-eill.vercel.app/">Diários de uma apotecária</a></li>
+                    <li><a href="https://jogos-da-memoria-animes-7766.vercel.app/">Frieren e a jornada para o além</a></li>
+                    <li><a href="https://jogos-da-memoria-animes-so8a.vercel.app/">Spy X Family</a></li>
+                    
+                </ul> 
+            </div> 
+        </nav>
+        <header>
+            <br>
+            <h1>Jogo da Memória</h1> 
+            <h1 style="color: #bc6828bc; text-align: center; font-size: 70px;">Católico</h1>
+            <br>
+        </header>
+        
+        <div class="container-principal" style="background-color:antiquewhite;">
+        <div class="grade-imagens">
+        <table>
+        <script>
+            const santos = [
+                "SaoFilipeNeri",
+                "SaoJose",
+                "SaoJoaoPauloII",
+                "SantaCecilia",
+                "NossaSenhoraDoCarmo",
+                "SantaTeresinha",
+                "SantaLuzia",
+                "SantoAgostinho",
+                "SaoDomBosco",
+                "SantaClara"
+            ]
+            const cartas = [...santos, ...santos];
+            cartas.sort(() => Math.random() -0.5);
+            let primeiraCarta = null;
+            let segundaCarta = null;
+            let bloqueado = false;
+
+            function VirarCarta(posicao) {
+            
+                if(bloqueado) return
+                let carta = document.getElementById(posicao);
+                let santo = cartas[posicao-1]
+                carta.src = "img/" + santo + ".jpg"
+                if(primeiraCarta == null) {
+                    primeiraCarta = posicao
+                }else if(segundaCarta == null){
+                    segundaCarta = posicao
+                    bloqueado = true
+                    setTimeout(verificarPar, 800)
+                }
+                }
+
+            function verificarPar(){
+                let santo1 = cartas[primeiraCarta-1];
+                let santo2 = cartas[segundaCarta-1];
+                if(santo1 == santo2){
+                    //acertou
+                    paresEncontrados++;
+                    verificarVitoria();
+                    primeiraCarta = null;
+                    segundaCarta = null;
+                    bloqueado = false;
+                }else{
+                    //errou
+                    document.getElementById(primeiraCarta).src = "img/VersoDaCarta3.jpg";
+                    document.getElementById(segundaCarta).src = "img/VersoDaCarta3.jpg";
+                    primeiraCarta = null;
+                    segundaCarta = null;
+                    bloqueado = false;
+                }
+            }
+            let paresEncontrados = 0;
+            let totalPares = 10;
+            function verificarVitoria(){
+                if (paresEncontrados === totalPares){
+                alert("Vitória! Você encontrou todos os pares!");
+                }
+            }
+            function mostrarVitoria(){
+                const tela = document.getElementById("tela-vitoria");
+                tela.classList.add("ativa");
+            }
+            function reiniciarJogo(){
+                location.reload()
+            }
+            function comecarJogo() {
+                document.getElementById("tela-inicial").style.display = "none"
+            };
+        </script>
+            <tr>
+            <tr class="linha-espaco">
+                <td colspan="11"></td>
+            </tr>
+
+                <td> <img id="1" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(1)"> </td>
+                <td> <img id="2" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(2)"> </td>
+                <td> <img id="3" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(3)"> </td>
+                <td> <img id="4" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(4)">  </td>
+                <td> <img id="5" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(5)"> </td>
+                <td class="espaco"></td>
+                
+                <td> <img id="6" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(6)"> </td>
+                <td> <img id="7" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(7)"> </td>
+                <td> <img id="8" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(8)"> </td>
+                <td> <img id="9" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(9)"> </td>
+                <td> <img id="10" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(10)"> </td>
+            </tr>
+            <tr class="linha-espaco">
+                <td colspan="11"></td>
+            </tr>
+            <tr>
+                <td> <img id="11" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(11)"> </td>
+                <td> <img id="12" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(12)"> </td>
+                <td> <img id="13" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(13)"> </td>
+                <td> <img id="14" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(14)"> </td>
+                <td> <img id="15" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(15)"> </td>
+
+                <td class="espaco"></td>
+
+                <td> <img id="16" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(16)"> </td>
+                <td> <img id="17" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(17)"> </td>
+                <td> <img id="18" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(18)"> </td>
+                <td> <img id="19" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(19)"> </td>
+                <td> <img id="20" src="img/VersoDaCarta3.jpg" alt="" onclick="VirarCarta(20)"> </td>
+                <tr class="linha-espaco">
+                <td colspan="11"></td>
+            </tr>
+            
+           
+        </table>
+        <div id="tela-vitoria" class="vitoria">
+        <div class="vitoria-conteudo">
+            <h2>🎉 Vitória!</h2>
+            <p>Você encontrou todos os pares!</p>
+            <button onclick="reiniciarJogo()">Jogar novamente</button>
+        </div>
+        </div>
+        <div id="tela-inicial" class="inicio">
+            <div class="inicio-conteudo">
+                <button onclick="comecarJogo()">Começar jogo</button>
+            </div>
+            <br>
+            <br>
+        
+    </body>
+    <footer>
+        <br>
+        <p>© 2026 - Hevelin Duarte</p>
+        <p>Contato: <a style="color: rgb(255, 255, 255);" href="hevelinduarte002@gmail.com">hevelinduarte002@gmail.com</a></p>
+        <p>LinkedIn: <a style="color: rgb(255, 255, 255);" href="www.linkedin.com/in/hevelin-duarte-guerra-084bbb2a9">www.linkedin.com/in/hevelin-duarte-guerra-084bbb2a9</a></p>
+        <br>
+    </footer>
+</html>
